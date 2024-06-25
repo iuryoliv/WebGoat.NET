@@ -12,7 +12,7 @@ namespace WebGoatCore.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<IdentityUser> _signInManager; 
         private readonly CustomerRepository _customerRepository;
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, CustomerRepository customerRepository)
