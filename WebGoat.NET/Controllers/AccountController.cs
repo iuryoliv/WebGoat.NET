@@ -21,7 +21,23 @@ namespace WebGoatCore.Controllers
             _signInManager = signInManager;
             _customerRepository = customerRepository;
         }
+         public async void sampleSecret()
+        {
+            string stringConn ="DefaultEndpointsProtocol=https;AccountName=iuryolivsa123;AccountKey=+WKAxntIeRNMmlANA2s3z15MdC/GnPcJgL2xtpLKAhaWaO8FvVlJlqKMvV8xlZ2WGALGbthZNxb8+ASteZ77yw==;EndpointSuffix=core.windows.net";    
+            BlobServiceClient blobServiceClient = new BlobServiceClient(stringConn);
 
+           // BlobServiceClient blobServiceClient = new BlobServiceClient(blobServiceEndpoint, new StorageSharedKeyCredential(storageAccountName, storageAccountKey));
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+           string lstblob =string.Empty;
+
+            await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
+            {
+                lstblob+= blobItem.Name + "\n";
+                     
+            }
+
+        }
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string? returnUrl)
